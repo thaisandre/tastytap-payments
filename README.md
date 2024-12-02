@@ -1,7 +1,7 @@
 # tastytap-payment
 Repositório da aplicação de pagamentos - Software Architecture da FIAP.
 
-# flow
+## fluxo:
 ```mermaid
 sequenceDiagram
     external-client->>tastytap-payments: POST /create

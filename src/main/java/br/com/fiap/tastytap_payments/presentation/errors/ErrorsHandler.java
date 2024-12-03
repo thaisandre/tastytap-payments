@@ -2,6 +2,7 @@ package br.com.fiap.tastytap_payments.presentation.errors;
 
 import br.com.fiap.tastytap_payments.infraestructure.exceptions.ApiException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -31,7 +32,7 @@ public class ErrorsHandler {
     }
 
     @ExceptionHandler(ApiException.class)
-    public ApiError handlerApiException(ApiException exception) {
-        return new ApiError(exception);
+    public ResponseEntity<ApiError> handlerApiException(ApiException exception) {
+        return ResponseEntity.status(exception.getStatus()).body(new ApiError(exception));
     }
 }

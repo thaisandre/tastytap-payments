@@ -31,15 +31,12 @@ public class ProviderPaymentClient {
 
     public QRCodeResponse generateQRCode(Long referenceId, BigDecimal amount) {
         RequestEntity<QRCodeRequest> request = buildRequest(referenceId, amount);
-        try {
-            ResponseEntity<QRCodeResponse> response = this.restTemplate.exchange(request, QRCodeResponse.class);
-            return Optional.of(response)
-                    .filter(r -> r.getStatusCode().is2xxSuccessful())
-                    .map(ResponseEntity::getBody)
-                    .orElseThrow(() -> new ApiException("Error generating QR Code from provider"));
-        } catch (Exception e) {
-            throw new ApiException("Error generating QR Code from provider");
-        }
+        ResponseEntity<QRCodeResponse> response = this.restTemplate.exchange(request, QRCodeResponse.class);
+        return Optional.of(response)
+                .filter(r -> r.getStatusCode().is2xxSuccessful())
+                .map(ResponseEntity::getBody)
+                .orElseThrow(() -> new ApiException("Error generating QR Code from provider.",
+                        response.getStatusCode().value()));
     }
 
     private RequestEntity<QRCodeRequest> buildRequest(Long referenceId, BigDecimal amount) {

@@ -2,8 +2,9 @@ package br.com.fiap.tastytap_payments.utils;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class NumberGenerator {
+public final class NumberGenerator {
 
+    private NumberGenerator() {}
     private static final AtomicLong number = new AtomicLong(System.currentTimeMillis()  / 50);
 
     public static long getNext() {

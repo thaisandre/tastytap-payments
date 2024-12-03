@@ -1,6 +1,8 @@
 package br.com.fiap.tastytap_payments.utils;
 
-public class ValidationUtils {
+public final class ValidationUtils {
+
+    private ValidationUtils() {}
 
     public static void notNull(Object object, String message) {
         if(object == null) {

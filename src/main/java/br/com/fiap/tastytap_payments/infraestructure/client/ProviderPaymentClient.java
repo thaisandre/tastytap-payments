@@ -17,10 +17,10 @@ import static org.springframework.http.HttpMethod.POST;
 @Service
 public class ProviderPaymentClient {
 
-    @Value("${payment.provider.url}")
+    @Value("${provider.url}")
     private String url;
 
-    @Value("${payment.provider.token}")
+    @Value("${provider.token}")
     private String token;
 
     private final RestTemplate restTemplate;

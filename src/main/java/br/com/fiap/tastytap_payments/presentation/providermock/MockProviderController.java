@@ -35,7 +35,7 @@ public class MockProviderController {
 
     private static final Logger log = LoggerFactory.getLogger(MockProviderController.class);
 
-    @Value("${payment.provider.token}")
+    @Value("${provider.token}")
     private String token;
 
     @Operation(summary = "Simula o que acontece ao apontar para um qrcode")
@@ -43,7 +43,7 @@ public class MockProviderController {
             @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = QRCodeResponse.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", description = "Erro interno do sistema", content = {@Content(schema = @Schema())})
     })
-    @PostMapping("/payments/mock/qrcode")
+    @PostMapping("/mock/qrcode")
     public ResponseEntity<?> simulateQRCode(@RequestHeader("Authorization") String authToken, @RequestBody QRCodeRequest request) {
         log.info("[MockProviderController] Simulate calling payment provider");
         if(!isAuthorize(authToken)) return status(UNAUTHORIZED).build();

@@ -10,7 +10,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/payments/swagger-ui/index.html";
+        return "redirect:/swagger-ui/index.html";
     }
 
     @ResponseBody

@@ -98,13 +98,10 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
-						<configuration>
-							<dataFile>target/jacoco.exec</dataFile>
-							<outputDirectory>target/site/jacoco</outputDirectory>
-						</configuration>
 					</execution>
 					<execution>
 						<id>default-check</id>
+						<phase>verify</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>
